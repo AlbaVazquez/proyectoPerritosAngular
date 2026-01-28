@@ -22,7 +22,7 @@ chown -R node:node /usr/src/app
 To start a local development server, run inside the proyect folder:
 
 ```bash
-ng serve --host 0.0.0.0 --poll=2000
+ng serve --host 0.0.0.0
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
