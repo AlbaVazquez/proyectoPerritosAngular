@@ -13,9 +13,8 @@ Inside the container:
 
 ```
 npm install
-chown -R node:node /usr/src/app
+chown -R 1001:1001 node_modules
 ```
-
 
 ## Development server
 
@@ -23,6 +22,11 @@ To start a local development server, run inside the proyect folder:
 
 ```bash
 ng serve --host 0.0.0.0
+```
+
+Execute in a new terminal:
+```
+docker run -it -v ${PWD}:/usr/src/app -u 1001 -p 4200:4200 mflober/angapp19-image:1.0 /bin/sh
 ```
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
