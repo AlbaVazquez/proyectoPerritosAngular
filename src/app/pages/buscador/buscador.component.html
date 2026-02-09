@@ -1,0 +1,28 @@
+<div class="container">
+    <h1>🐶 Buscador de Perritos 🐶</h1>
+
+    <div class="search-box">
+        <label>Elige una raza: </label>
+        <select (change)="buscarPerros($event)">
+            <option value disabled selected>-- Selecciona --</option>
+            <option *ngFor="let raza of listadoRazas" [value]="raza">
+                {{ raza | titlecase }}
+            </option>
+        </select>
+    </div>
+
+    <div class="gallery">
+        <div *ngFor="let foto of fotosPerros" class="card position-relative">
+            <img [src]="foto" alt="Foto de perro">
+
+            <button (click)="toggleFavorito(foto)" class="btn position-absolute top-0 end-0 m-2 rounded-circle"
+                [class.btn-danger]="favoritosService.isFavorito(foto)"
+                [class.btn-light]="!favoritosService.isFavorito(foto)">
+
+                <i class="bi" [class.bi-heart-fill]="favoritosService.isFavorito(foto)"
+                    [class.bi-heart]="!favoritosService.isFavorito(foto)">
+                </i>
+            </button>
+        </div>
+    </div>
+</div>

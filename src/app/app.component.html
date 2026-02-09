@@ -1,19 +1,13 @@
-<div class="container">
-  <h1>🐶 Buscador de Perritos 🐶</h1>
+<nav class="navbar">
+  <div class="logo">🐕 DogApp</div>
+  <ul class="menu">
+    <li><a routerLink="/inicio" routerLinkActive="activo">Inicio</a></li>
+    <li><a routerLink="/buscador" routerLinkActive="activo">Buscador</a></li>
+    <li><a routerLink="/favoritos" routerLinkActive="activo">Favoritos ❤️</a></li>
+    <li><a routerLink="/contacto" routerLinkActive="activo">Contacto</a></li>
+  </ul>
+</nav>
 
-  <div class="search-box">
-    <label>Elige una raza: </label>
-    <select (change)="buscarPerros($event)">
-      <option value="" disabled selected>-- Selecciona --</option>
-      <option *ngFor="let raza of listadoRazas" [value]="raza">
-        {{ raza | titlecase }}
-      </option>
-    </select>
-  </div>
-
-  <div class="gallery">
-    <div *ngFor="let foto of fotosPerros" class="card">
-      <img [src]="foto" alt="Foto de perro">
-    </div>
-  </div>
+<div class="contenido-principal">
+  <router-outlet></router-outlet>
 </div>
