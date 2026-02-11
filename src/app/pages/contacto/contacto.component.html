@@ -8,29 +8,24 @@
         <div class="col-md-6">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white">
-                    <h3>📩 Contacta con nosotros</h3>
+                    <h3>Contacta con nosotros</h3>
                 </div>
                 <div class="card-body">
 
                     <div *ngIf="mensajeEnviado" class="alert alert-success">
-                        ¡Mensaje enviado correctamente! 🚀
+                        ¡Mensaje enviado correctamente!
                     </div>
 
                     <form [formGroup]="contactForm" (ngSubmit)="enviarFormulario()">
 
                         <div class="mb-3">
                             <label class="form-label">Nombre</label>
-                            <input type="text" class="form-control" formControlName="nombre"
-                                [class.is-invalid]="contactForm.get('nombre')?.invalid && contactForm.get('nombre')?.touched">
-                            <div class="invalid-feedback">
-                                El nombre es obligatorio (mínimo 3 letras).
-                            </div>
+                            <input type="text" class="form-control" formControlName="nombre">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" formControlName="email"
-                                [class.is-invalid]="contactForm.get('email')?.invalid && contactForm.get('email')?.touched">
+                            <input type="email" class="form-control" formControlName="email">
                             <div class="invalid-feedback">
                                 Introduce un email válido.
                             </div>
@@ -38,11 +33,7 @@
 
                         <div class="mb-3">
                             <label class="form-label">Mensaje</label>
-                            <textarea class="form-control" rows="4" formControlName="mensaje"
-                                [class.is-invalid]="contactForm.get('mensaje')?.invalid && contactForm.get('mensaje')?.touched"></textarea>
-                            <div class="invalid-feedback">
-                                Cuéntanos algo más (mínimo 10 caracteres).
-                            </div>
+                            <textarea class="form-control" rows="4" formControlName="mensaje"></textarea>
                         </div>
 
                         <button type="submit" class="btn btn-primary w-100" [disabled]="contactForm.invalid">

@@ -30,7 +30,6 @@
     color: #ffd700;
 }
 
-/* Clase que Angular pone automática al enlace activo */
 .activo {
     border-bottom: 2px solid #ffd700;
     font-weight: bold;

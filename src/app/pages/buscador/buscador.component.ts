@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { DogService } from '../../services/dog.service'; // Fíjate que la ruta cambia un poco al moverlo
+import { DogService } from '../../services/dog.service';
 import { FavoritosService } from '../../services/favoritos.service';
 
 @Component({
