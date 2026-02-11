@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute, RouterLink } from '@angular/router'; // Importante para leer la URL y volver atrás
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-detalle',
@@ -12,17 +12,14 @@ import { ActivatedRoute, RouterLink } from '@angular/router'; // Importante para
 export class DetalleComponent implements OnInit {
   private route = inject(ActivatedRoute);
 
-  // Variables para guardar los datos
   imagen: string = '';
   raza: string = '';
   
-  // Datos simulados (nos los inventamos para que quede bonito)
   nombre: string = '';
   edad: number = 0;
   descripcion: string = '';
 
   ngOnInit() {
-    // Leemos los parámetros de la URL (lo que viene después del ?)
     this.route.queryParams.subscribe(params => {
       this.imagen = params['imagen'];
       this.raza = params['raza'];
@@ -41,9 +38,8 @@ export class DetalleComponent implements OnInit {
       'Tímido al principio, pero muy cariñoso cuando coge confianza.'
     ];
 
-    // Elegimos uno al azar
     this.nombre = nombres[Math.floor(Math.random() * nombres.length)];
-    this.edad = Math.floor(Math.random() * 12) + 1; // Edad entre 1 y 12 años
+    this.edad = Math.floor(Math.random() * 12) + 1;
     this.descripcion = descripciones[Math.floor(Math.random() * descripciones.length)];
   }
 }
