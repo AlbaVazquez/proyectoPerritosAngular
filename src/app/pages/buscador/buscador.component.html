@@ -13,7 +13,7 @@
 
     <div class="gallery">
         <div *ngFor="let foto of fotosPerros" class="card position-relative">
-            <img [src]="foto" alt="Foto de perro">
+            <img [src]="foto" (click)="verDetalle(foto)" alt="Foto de perro" style="cursor: pointer;" title="Haz clic para ver detalles">
 
             <button (click)="toggleFavorito(foto)" class="btn position-absolute top-0 end-0 m-2 rounded-circle"
                 [class.btn-danger]="favoritosService.isFavorito(foto)"

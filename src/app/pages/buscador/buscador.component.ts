@@ -2,6 +2,7 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DogService } from '../../services/dog.service';
 import { FavoritosService } from '../../services/favoritos.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-buscador',
@@ -13,6 +14,7 @@ import { FavoritosService } from '../../services/favoritos.service';
 export class BuscadorComponent implements OnInit {
   private dogService = inject(DogService);
   public favoritosService = inject(FavoritosService);
+  private router = inject(Router);
 
   listadoRazas: string[] = [];
   fotosPerros: string[] = [];
@@ -38,6 +40,16 @@ export class BuscadorComponent implements OnInit {
       this.favoritosService.addFavorito(url);
     }
   }
+
+  verDetalle(urlImagen: string) {
+    this.router.navigate(['/detalle'], {
+      queryParams: {
+        imagen: urlImagen,
+        raza: this.razaSeleccionada
+      }
+    });
+  }
 }
+
 
 
