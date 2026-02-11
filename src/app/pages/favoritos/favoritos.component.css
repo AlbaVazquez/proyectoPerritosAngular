@@ -63,5 +63,6 @@ select:focus {
     width: 100%;
     height: 250px;
     object-fit: cover;
+    /* Recorta la imagen para que llene el hueco sin deformarse */
     display: block;
 }

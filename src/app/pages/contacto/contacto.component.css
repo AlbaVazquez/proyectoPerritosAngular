@@ -4,7 +4,6 @@
 }
 
 .contact-card {
-    background: white;
     width: 100%;
     max-width: 500px;
     padding: 40px;
@@ -47,4 +46,9 @@ strong {
 
 .btn-link:hover {
     background-color: #d4ac0d;
+}
+
+#contact-info div p {
+    padding: 20px;
+    padding-top: 3px;
 }
