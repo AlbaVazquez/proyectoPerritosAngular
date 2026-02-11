@@ -14,22 +14,39 @@ export class ContactoComponent {
   mensajeEnviado: boolean = false;
 
   constructor(private fb: FormBuilder) {
+    // 1. Aquí SOLO inicializamos el formulario
     this.contactForm = this.fb.group({
-      nombre: [''], 
+      nombre: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mensaje: ['']
+      mensaje: ['', [Validators.required, Validators.minLength(1)]]
     });
   }
 
+  // 2. Creamos la función que se ejecuta al hacer SUBMIT
   enviarFormulario() {
     if (this.contactForm.valid) {
-      console.log("Datos enviados:", this.contactForm.value);
-      this.mensajeEnviado = true;
-      this.contactForm.reset();
+      const formData = this.contactForm.value;
       
-      setTimeout(() => this.mensajeEnviado = false, 3000);
-    } else {
-      this.contactForm.markAllAsTouched();
+      fetch("https://formspree.io/f/mgolopeb", {
+        method: "POST",
+        body: JSON.stringify(formData),
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      }).then(response => {
+        if (response.ok) {
+          this.mensajeEnviado = true;
+          this.contactForm.reset();
+          
+          // Opcional: ocultar el mensaje de éxito después de 5 segundos
+          setTimeout(() => this.mensajeEnviado = false, 5000);
+        } else {
+          alert("Hubo un error al enviar el formulario.");
+        }
+      }).catch(error => {
+        console.error("Error:", error);
+      });
     }
   }
 }
