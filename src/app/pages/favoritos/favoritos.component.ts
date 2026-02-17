@@ -11,10 +11,13 @@ import { FavoritosService } from '../../services/favoritos.service';
 })
 export class FavoritosComponent implements OnInit {
 
+  // Esta es la variable que el HTML intenta leer
   listaFavoritos: string[] = [];
 
+  // Inyectamos el servicio en el constructor
   constructor(private favoritosService: FavoritosService) {}
 
+  // Al iniciar, cargamos los datos del servicio
   ngOnInit() {
     this.cargarFavoritos();
   }
@@ -24,7 +27,7 @@ export class FavoritosComponent implements OnInit {
   }
 
   eliminar(foto: string) {
-    this.favoritosService.removeFavorito(foto);
-    this.cargarFavoritos();
+    this.favoritosService.removeFavorito(foto); // Borra del localStorage
+    this.cargarFavoritos(); // Actualiza la lista en pantalla
   }
 }
